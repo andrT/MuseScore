@@ -740,6 +740,12 @@ class MuseScore : public QMainWindow, public MuseScoreCore {
       bool exportTransposedScoreToJSON(const QString& inFilePath, const QString& transposeOptions, const QString& outFilePath = "/dev/stdout");
       /////////////////////////////////////////////////
 
+      /////The methods are used in MatchMySound backend
+      bool saveSvgCollection(MasterScore*, const QString& name, const bool do_linearize, const QString& partsName, const bool durationChecks);
+      bool getPartsDescriptions(MasterScore*, const QString& name);
+      bool saveMLData(MasterScore*, const QString& name, const QString& partsName);
+      /////////////////////////////////////////////////
+
       void scoreUnrolled(MasterScore* original);
       
       virtual void closeScore(Score* score);
