@@ -111,7 +111,6 @@ QString checkSafety(Score * score)
             qreal endtime = score->tempomap()->tick2time(endTick);
 
             if (endtime>60*20) return QString("Piece lasts too long");
-            if (endtime*nexcerpts>60*120) return QString("Piece lasts too long with parts");
             }
 
       if (score->lastMeasure() == NULL) return QString("Piece has no notes");
@@ -143,7 +142,7 @@ void createAllExcerpts(Score * score)
       createExcerpts(cs,excerpts);
       }
 
-SvgGenerator * getSvgPrinter(QIODevice * device, qreal width, qreal height) 
+SvgGenerator * getSvgPrinter(QIODevice * device, qreal width, qreal height)
       {
       SvgGenerator * printer = new SvgGenerator();
       //printer->setResolution(preferences.getInt(PREF_EXPORT_PDF_DPI));// converterDpi);
@@ -517,7 +516,7 @@ void createSvgCollection(MQZipWriter * uz, Score* score, const QString& prefix, 
                         }
                   }
       qWarning() << "METAINFO" << qts["title"] << qts["subtitle"] << qts["composer"];
-      
+
 
       // Instruments
       QJsonArray iar;
@@ -735,7 +734,7 @@ QJsonArray createSvgs(Score* score, MQZipWriter * uz, const QMap<int,qreal>& t2t
       TempoMap * tempomap = score->tempomap();
 
       QJsonArray result;
-      
+
       // Find max system width
       qreal max_w = 0;
       int nsystems = 0;
