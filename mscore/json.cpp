@@ -262,10 +262,10 @@ bool MuseScore::getPartsDescriptions(MasterScore* score, const QString& saveName
 
       //qDebug("OPEN FILE");
 
-      
+
       QFile file(saveName);
       file.open(QIODevice::WriteOnly | QIODevice::Text);
-      
+
       QJsonObject obj = QJsonObject();
 
       // List all parts
@@ -278,6 +278,7 @@ bool MuseScore::getPartsDescriptions(MasterScore* score, const QString& saveName
             pobj["id"] = part->id();
             pobj["instrument"] = getInstrumentName(part->instrument());
             pobj["name"] = part->partName();
+            pobj["instrumentKey"] = part->instrument()->transpose().chromatic;
             p_ar.append(pobj);
             }
       obj["parts"] = p_ar;
